@@ -1,5 +1,6 @@
 import { Target, Eye, Heart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import customerServiceImg from "@/assets/customer-service.jpg";
 
 const About = () => {
   const values = [
@@ -62,6 +63,15 @@ const About = () => {
               </ul>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Imagem de atendimento */}
+        <div className="mt-16 rounded-2xl overflow-hidden shadow-2xl animate-fade-in" style={{ animationDelay: "0.3s" }}>
+          <img 
+            src={customerServiceImg} 
+            alt="Atendimento especializado Agrofenster" 
+            className="w-full h-[400px] object-cover"
+          />
         </div>
       </div>
     </section>
