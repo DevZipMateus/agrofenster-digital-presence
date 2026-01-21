@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +32,15 @@ const Header = () => {
     }
   };
 
+  const handleNavClick = (id: string) => {
+    if (isHomePage) {
+      scrollToSection(id);
+    } else {
+      navigate(`/#${id}`);
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   const navItems = [
     { id: "inicio", label: "Início" },
     { id: "sobre", label: "Sobre" },
@@ -44,7 +57,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <button
-            onClick={() => scrollToSection("inicio")}
+            onClick={() => handleNavClick("inicio")}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
             <img src="/logo.png" alt="Agrofenster" className="h-12 w-auto" />
@@ -55,7 +68,7 @@ const Header = () => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavClick(item.id)}
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 {item.label}
@@ -84,7 +97,7 @@ const Header = () => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavClick(item.id)}
                 className="block w-full text-left py-3 text-foreground hover:text-primary hover:bg-secondary/50 rounded-md px-4 transition-colors"
               >
                 {item.label}
