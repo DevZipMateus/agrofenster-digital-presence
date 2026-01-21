@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import { Link } from "react-router-dom";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -61,6 +61,12 @@ const Header = () => {
                 {item.label}
               </button>
             ))}
+            <Link to="/vitrine">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
+                <ShoppingBag className="w-4 h-4" />
+                Vitrine
+              </Button>
+            </Link>
           </nav>
 
           <Button
@@ -84,6 +90,12 @@ const Header = () => {
                 {item.label}
               </button>
             ))}
+            <Link to="/vitrine" className="block w-full">
+              <Button className="w-full mt-2 bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
+                <ShoppingBag className="w-4 h-4" />
+                Vitrine
+              </Button>
+            </Link>
           </nav>
         )}
       </div>

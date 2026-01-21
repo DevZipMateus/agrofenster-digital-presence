@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Instagram, Mail } from "lucide-react";
+import { Instagram, Mail, ShoppingBag } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
@@ -55,6 +56,15 @@ const Hero = () => {
             >
               Conheça mais
             </Button>
+            <Link to="/vitrine">
+              <Button
+                size="lg"
+                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground gap-2"
+              >
+                <ShoppingBag className="w-5 h-5" />
+                Ver Vitrine
+              </Button>
+            </Link>
           </div>
           
           <div className="flex items-center gap-4 mt-8">
